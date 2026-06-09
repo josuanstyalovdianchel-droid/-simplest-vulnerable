@@ -37,9 +37,9 @@ if(isset($_GET['id'])) {
 
 if(isset($_GET['mensaje'])) {
     $mensaje = $_GET['mensaje']; // Input del usuario susceptible a XSS
-    echo "<div>$mensaje</div>"; // Vulnerable a XSS
+    echo "<div>" . htmlspecialchars($mensaje, ENT_QUOTES, 'UTF-8') . "</div>"; // Fixed XSS with output encoding
 }
 
 // Cerrar conexión
-$conn->close();
+
 ?>
